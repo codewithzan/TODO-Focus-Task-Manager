@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus — Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- App shell -->
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <span class="logo-mark">◆</span>
+        <h1 class="app-title">Focus</h1>
+      </div>
+      <div class="header-right">
+        <span class="date-label" id="dateLabel"></span>
+        <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+          <span id="themeIcon">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats bar -->
+    <section class="stats-bar">
+      <div class="stat-chip"><span class="stat-value" id="cntTotal">0</span><span class="stat-label">Total</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-chip"><span class="stat-value" id="cntActive">0</span><span class="stat-label">Active</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-chip"><span class="stat-value" id="cntDone">0</span><span class="stat-label">Done</span></div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </section>
+
+    <!-- Main card -->
+    <main class="card">
+
+      <!-- Input section -->
+      <div class="input-section">
+        <div class="input-row">
+          <input
+            type="text"
+            id="todoInput"
+            class="todo-input"
+            placeholder="What needs to be done?"
+            maxlength="120"
+            autocomplete="off"
+            aria-label="New task"
+          />
+          <button class="add-btn" id="addBtn" aria-label="Add task">
+            <!-- Plus icon drawn with inline SVG -->
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <div class="meta-row">
+          <div class="meta-group">
+            <label class="meta-label" for="prioritySel">Priority</label>
+            <select id="prioritySel" class="meta-select">
+              <option value="none">None</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="meta-group">
+            <label class="meta-label" for="dueDate">Due</label>
+            <input type="date" id="dueDate" class="meta-date" aria-label="Due date" />
+          </div>
+        </div>
+
+        <p class="val-msg" id="valMsg" aria-live="polite"></p>
+      </div>
+
+      <!-- Filter bar -->
+      <nav class="filter-bar" aria-label="Filter tasks">
+        <button class="f-btn active" data-filter="all">All</button>
+        <button class="f-btn" data-filter="active">Active</button>
+        <button class="f-btn" data-filter="completed">Completed</button>
+        <button class="clear-btn" id="clearBtn">Clear done</button>
+      </nav>
+
+      <!-- Task list -->
+      <ul class="todo-list" id="todoList" aria-label="Tasks" aria-live="polite"></ul>
+
+      <!-- Empty state -->
+      <div class="empty" id="emptyState">
+        <span class="empty-icon">✦</span>
+        <p class="empty-title">Nothing here yet</p>
+        <p class="empty-sub">Add a task above to get started</p>
+      </div>
+
+    </main>
+
+    <footer class="footer">Focus · tasks saved in your browser</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
